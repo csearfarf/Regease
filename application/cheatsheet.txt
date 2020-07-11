@@ -1,0 +1,124 @@
+//////////////////////////////////////////////////////
+
+				VIEW CHEATSHEET
+
+// Getting the value from inputs
+$('#inputID').val();
+
+//reload datatable
+$('#accounts').DataTable().ajax.reload();
+
+// reset form
+$('#createForm')[0].reset();
+
+// hide
+$('#createAccount').modal('hide'); 
+
+
+// ajax example
+$.ajax({
+              url: url, // Url to which the request is send
+              type: "POST",             // Type of request to be send, called as method
+              data: {acctype:acctype,username:username,password:password,firstname:firstname,lastname:lastname,rankType:rankType,area:area}, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+              dataType: 'json',
+              success: function(data)   // A function to be called if request succeeds
+              {
+                          
+              }
+
+          });
+
+
+ /// Modal Black system
+
+
+   
+  <div class="modal fade" tabindex="-1" role="dialog" id="createAccount">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form  id="createForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick=''>Create Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>     
+
+
+
+//////////////////////////////////////////////////////
+
+				MODEL CHEATSHEET
+
+				
+
+// insert query
+
+$this->db->insert('tbl_accounts', $dataArrayFromController);
+return ($this->db->affected_rows() != 1) ? false : true; // passing the result in controller
+
+// update query
+
+$this->db->where('id', $idFromController);
+$this->db->update('table_name',$dataArrayFromController);  
+
+return ($this->db->affected_rows() >= 0) ? true : false; // passing the result to controller
+
+// delete query
+
+$this->db->delete('tbl_accounts', $dataArrayFromController);
+return ($this->db->affected_rows() != 1) ? false : true; // passing the 
+
+
+// get specific data query 
+
+$this->db->select('*');
+$this->db->from('tableName');
+$this->db->where('tableName.id', $idFromController);
+$query=$this->db->get();
+return $query->result(); // passing the result in controller
+
+
+
+
+//////////////////////////////////////////////////////
+
+				CONTROLLER CHEATSHEET
+
+// Calling model
+$this->load->model('accounts_model'); 
+
+
+// Creating array
+$variableName = array(
+'db_column_name'=>$this->input->post('#ajax data name')
+);
+
+
+
+
+
+
+
+
+
+
